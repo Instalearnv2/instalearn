@@ -1,0 +1,48 @@
+.auth-con {
+  display: flex;
+  height: 100vh;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+
+  .left-con {
+    flex: 0.3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 1rem;
+
+    .or {
+      text-align: center;
+      font-size: 20px;
+      background:
+        linear-gradient(#b0b0b0 0 0) left,
+        linear-gradient(#b0b0b0 0 0) right;
+      background-size: 40% 1px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .right-con {
+    flex: 0.7;
+    background-image: url("../../assets/images/loginimage.svg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+
+    // img {
+    //   max-width: 100%;
+    // }
+  }
+
+  @media only screen and (max-width: 820px) {
+    .right-con {
+      display: none;
+    }
+  }
+}
