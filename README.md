@@ -6,7 +6,7 @@
   <a href="https://www.aitutor.decentraclasses.com//" target="_blank">
     <img src="./client/src/assets/icons/logo-small.svg" alt="Project Logo" height="100">
   </a>
-    <h1>Lern</h1>
+    <h1>InstaLearn</h1>
 </div>
 
 <!-- ABOUT THE PROJECT -->
