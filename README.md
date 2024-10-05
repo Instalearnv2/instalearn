@@ -25,12 +25,12 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 
-Welcome to **Lern**, the revolutionary learning platform that empowers users to explore and master any topic of their choice instantly. Leveraging the power of Google's Bard, Lern harnesses the cutting-edge capabilities of artificial intelligence to generate comprehensive courses tailored to individual learning needs. Say goodbye to lengthy search sessions and scattered resources – with Lern, knowledge is just a few clicks away!
+Welcome to **InstaLearn**, the revolutionary learning platform that empowers users to explore and master any topic of their choice instantly. Leveraging the power of Google's Bard, Lern harnesses the cutting-edge capabilities of artificial intelligence to generate comprehensive courses tailored to individual learning needs. Say goodbye to lengthy search sessions and scattered resources – with Lern, knowledge is just a few clicks away!
  
 
 **Features of our application**:
 
-Lern is packed with features designed to enhance the learning experience and provide users with a seamless educational journey. Here are some of the key highlights:
+InstaLearn is packed with features designed to enhance the learning experience and provide users with a seamless educational journey. Here are some of the key highlights:
 
 - **Course Generation**: Users can unleash their curiosity and thirst for knowledge by simply inputting their desired topic. Lern's intelligent algorithms powered by Google's Bard will instantly generate comprehensive and well-structured courses, ensuring a well-rounded understanding of the subject matter.
 
