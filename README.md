@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://www.aitutor.decentraclasses.com//" target="_blank">
-    <img src="./client/src/assets/icons/logo-small.svg" alt="Project Logo" height="100">
+    <img src="./client/src/assets/icons/logo.png" alt="Project Logo" height="100">
   </a>
     <h1>InstaLearn</h1>
 </div>
@@ -53,44 +53,21 @@ Here is a sneak peek of the application and it's visuals 😍:
 <table>
     <tr>
         <td width="50%">
-            <img src="./client/src/assets/screenshots/register.png" />
+            <img src="https://github.com/user-attachments/assets/150f1fb0-a859-4e09-ada3-4d0728fca499"/>
             <br />
             <p align="center">Registration</p></td>
         <td width="50%">
-            <img src="./client/src/assets/screenshots/dashboard.png" />
+            <img src="https://github.com/user-attachments/assets/2a44cd84-c6ae-4631-bfcf-18c26ab5deb0" />
             <br />
             <p align="center">Dashboard</p></td>
     </tr>
     <tr>
         <td width="50%">
-            <img src="./client/src/assets/screenshots/generate.png" />
+            <img src="https://github.com/user-attachments/assets/571fa15a-a5e3-4028-88fd-d53b9b3f4e31" />
             <br />
             <p align="center">Generate Course</p></td>
-        <td width="50%">
-            <img src="./client/src/assets/screenshots/courses.png" />
-            <br />
-            <p align="center">All Courses</p></td>
     </tr>
-    <tr>
-        <td width="50%">
-            <img src="./client/src/assets/screenshots/course.png" />
-            <br />
-            <p align="center">Course</p></td>
-        <td width="50%">
-            <img src="./client/src/assets/screenshots/chapter.png" />
-            <br />
-            <p align="center">Chapter</p></td>
-    </tr>
-    <tr>
-        <td width="50%">
-            <img src="./client/src/assets/screenshots/quiz.png" />
-            <br />
-            <p align="center">Quiz</p></td>
-        <td width="50%">
-            <img src="./client/src/assets/screenshots/insights.png" />
-            <br />
-            <p align="center">Insights</p></td>
-    </tr>
+
 </table>
 
 
@@ -118,7 +95,7 @@ Follow these steps to get started
 
 ```bash
 # Clone the repository
-git clone https://github.com/anomic30/Lern.git
+git clone https://github.com/Instalearnv2/instalearn.git
 # Enter into the frontend directory
 cd Lern/client
 # Install the dependencies
