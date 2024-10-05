@@ -3,7 +3,7 @@
 <!-- PROJECT Intro -->
 <br />
 <div align="center">
-  <a href="https://lern.pages.dev/" target="_blank">
+  <a href="https://www.aitutor.decentraclasses.com//" target="_blank">
     <img src="./client/src/assets/icons/logo-small.svg" alt="Project Logo" height="100">
   </a>
     <h1>Lern</h1>
@@ -13,7 +13,7 @@
 
 ## About The Project
 
-<a href="https://lern.pages.dev/" target="_blank">
+<a href="https://www.aitutor.decentraclasses.com/" target="_blank">
     <img src="./client/src/assets/screenshots/hero.png" alt="Project Banner">
 </a>
 
