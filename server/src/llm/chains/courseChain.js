@@ -1,5 +1,5 @@
 import { LLMChain } from "langchain/chains";
-import { palmModel } from "../models/palm.js";
+import { geminiModel } from "../models/gemini.js";
 import { coursePrompt } from "../templates/courseTemplate.js";
 import { jsonParser, formatResponse } from "../utils/jsonParser.js";
 
@@ -11,19 +11,18 @@ import { jsonParser, formatResponse } from "../utils/jsonParser.js";
  * @throws {Error} An error is thrown if the model fails to generate a course syllabus.
  */
 
-export const generateCourse = async(topic) => {
-    const model = palmModel(0.2);
-    const chain = new LLMChain({
-        llm: model,
-        prompt: coursePrompt,
-        verbose: true,
-    });
+export const generateCourse = async (topic) => {
+    const model = geminiModel(0.2);
 
     try {
-        const result = await chain.call({topic: topic});
-        return jsonParser(result.text);
+        const prompt = await coursePrompt.format({ topic });
+        const result = await model.generateContent(prompt);
+
+        const generatedText = result.response.text();
+        console.log("GENERATED TEXT: ", generatedText)
+        return generatedText;
     } catch (error) {
         console.error("❌ Error inside course generation:", error);
         throw new Error("Course generation failed!");
     }
-}
+};

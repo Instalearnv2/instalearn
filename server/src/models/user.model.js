@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userName: {
+  username: {
     type: String,
     required: true,
   },
@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema({
       finishedAt: {
         type: Date,
       },
-      timeTaken:{
+      timeTaken: {
         type: Number,
         default: 0,
       }

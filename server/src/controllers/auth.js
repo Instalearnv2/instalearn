@@ -49,7 +49,7 @@ export const login = catchAsync(async (req, res) => {
       user
     });
   } catch (error) {
-    console.error("❌ Error inside login controller:", error);
+    console.error("❌ Error inside login controller:", error.data);
     return res.status(500).json({ error: error });
   }
 });

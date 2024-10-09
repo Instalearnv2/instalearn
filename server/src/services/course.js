@@ -1,24 +1,26 @@
 import { generateContent } from "../llm/chains/contentChain.js";
 import { generateCourse } from "../llm/chains/courseChain.js";
 import { Course } from "../models/course.model.js";
+import magic from "../utils/magic.cjs";
 import { getUser } from "./user.js";
-
+import { parseJsonOutput } from "../utils/parseJSON.js";
 export const handleCourseGeneration = async (magicId, topic) => {
   try {
     const user = await getUser(magicId);
-    const course = await generateCourse(topic);
+    let course = await generateCourse(topic);
+    course = parseJsonOutput(course)
     let chapters = [];
     for (let chapter of course.syllabus) {
-        console.log("Chapter generator called for: ", chapter);
-        let chapterDetails = await generateContent(chapter);
-        console.log("Chapter generator ended")
-        console.log(chapterDetails);
+      console.log("Chapter generator called for: ", chapter);
+      let chapterDetails = await generateContent(chapter);
+      console.log("Chapter generator ended")
+      console.log(chapterDetails);
 
-        let chapterObj = {
-            title: chapter,
-            content: chapterDetails,
-        }
-        chapters.push(chapterObj);
+      let chapterObj = {
+        title: chapter,
+        content: chapterDetails,
+      }
+      chapters.push(chapterObj);
     }
 
     //save the syllabus in the Course model
@@ -31,9 +33,9 @@ export const handleCourseGeneration = async (magicId, topic) => {
 
     //save the course id in the user model. userData.cousese is an array
     let courseMetadata = {
-        courseId: newCourse._id,
-        title: course.title,
-        startedAt: new Date().toISOString()
+      courseId: newCourse._id,
+      title: course.title,
+      startedAt: new Date().toISOString()
     }
     user.courses.push(courseMetadata);
     await user.save();
@@ -48,7 +50,7 @@ export const handleCourseGeneration = async (magicId, topic) => {
 export const getCourse = async (courseId) => {
   try {
     const course = await Course.findById(courseId);
-    if(!course) {
+    if (!course) {
       throw new Error("Course not found!");
     }
     return course;
@@ -63,9 +65,9 @@ export const completeCourse = async (magicId, courseId) => {
     const user = await getUser(magicId);
     for (let course of user.courses) {
       if (course.courseId == courseId) {
-          course.completedAt = new Date().toISOString();
-          course.finished = true;
-          break;
+        course.completedAt = new Date().toISOString();
+        course.finished = true;
+        break;
       }
     }
     await user.save();
@@ -80,13 +82,13 @@ export const completeChapter = async (courseId, chapterId) => {
   try {
     let course = await Course.findById(courseId);
     if (!course) {
-        throw new Error("Course does not exist");
+      throw new Error("Course does not exist");
     }
     for (let chapter of course.chapters) {
-        if (chapter._id == chapterId) {
-            chapter.completed = !chapter.completed;
-            break;
-        }
+      if (chapter._id == chapterId) {
+        chapter.completed = !chapter.completed;
+        break;
+      }
     }
     await course.save();
     return course;

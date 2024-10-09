@@ -10,7 +10,7 @@ export const createUser = async (email, userName) => {
     if (existingUserName) {
       throw new Error("Username already exists");
     }
-    const user = await User.create({ email, userName });
+    const user = await User.create({ email, username: userName });
     return user;
   } catch (error) {
     console.error("❌ Error inside createUser:", error);
