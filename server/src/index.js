@@ -13,7 +13,12 @@ const port = process.env.PORT || 8082;
 
 app.use(compression());
 app.use(helmet());
-app.use(cors("*"));
+app.use(
+  cors({
+    origin: "https://ai.decentraclasses.com", // or "*" for all origins (not recommended for production)
+    credentials: true, // optional: allow cookies/auth headers
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
