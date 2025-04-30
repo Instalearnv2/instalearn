@@ -8,35 +8,54 @@ export const handleCourseGeneration = async (magicId, topic) => {
   try {
     const user = await getUser(magicId);
     let course = await generateCourse(topic);
-    course = parseJsonOutput(course)
+    course = parseJsonOutput(course);
+    console.log("Parsed course data:", course);
     let chapters = [];
-    for (let chapter of course.syllabus) {
-      console.log("Chapter generator called for: ", chapter);
-      let chapterDetails = await generateContent(chapter);
-      console.log("Chapter generator ended")
-      console.log(chapterDetails);
+    let courseTitle = topic; // Default to the topic name
 
-      let chapterObj = {
-        title: chapter,
-        content: chapterDetails,
+    // Check if course is an array
+    if (Array.isArray(course)) {
+      console.log("Course is an array, processing as chapters");
+      // If it's an array, we'll use the topic as the title
+      for (let chapter of course) {
+        let chapterDetails = await generateContent(chapter.title);
+
+        let chapterObj = {
+          title: chapter.title,
+          content: chapterDetails,
+        };
+        chapters.push(chapterObj);
       }
-      chapters.push(chapterObj);
+    } else if (course.syllabus) {
+      console.log("Course has syllabus, processing as flat structure");
+      courseTitle = course.title || topic; // Use course title if available
+      for (let chapter of course.syllabus) {
+        let chapterDetails = await generateContent(chapter);
+
+        let chapterObj = {
+          title: chapter,
+          content: chapterDetails,
+        };
+        chapters.push(chapterObj);
+      }
+    } else {
+      throw new Error("Invalid course structure");
     }
 
     //save the syllabus in the Course model
     const newCourse = new Course({
-      title: course.title,
-      chapters: chapters
-    })
+      title: courseTitle,
+      chapters: chapters,
+    });
 
     await newCourse.save();
 
-    //save the course id in the user model. userData.cousese is an array
+    //save the course id in the user model
     let courseMetadata = {
       courseId: newCourse._id,
-      title: course.title,
-      startedAt: new Date().toISOString()
-    }
+      title: courseTitle, // Use the courseTitle we determined above
+      startedAt: new Date().toISOString(),
+    };
     user.courses.push(courseMetadata);
     await user.save();
 
@@ -45,7 +64,7 @@ export const handleCourseGeneration = async (magicId, topic) => {
     console.error("❌ Error inside handleCourseGeneration:", error);
     throw error;
   }
-}
+};
 
 export const getCourse = async (courseId) => {
   try {

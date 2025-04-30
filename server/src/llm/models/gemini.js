@@ -7,10 +7,10 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
  * @returns {GoogleGenerativeAI} A Gemini model instance.
  */
 export const geminiModel = (temperature) => {
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-    // Note: Gemini doesn't directly support temperature setting in the same way
-    // You might need to adjust this based on Gemini's specific parameters
-    return model;
+  // Note: Gemini doesn't directly support temperature setting in the same way
+  // You might need to adjust this based on Gemini's specific parameters
+  return model;
 };
